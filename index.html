@@ -10,8 +10,14 @@
 <body>
   <main class="app">
     <header class="header">
-      <h1>Acronym Fill</h1>
-      <p class="subtitle">CompTIA A+ (1201) practice — fill the missing word</p>
+      <div class="title-row">
+        <h1>Acronym Fill</h1>
+        <div class="mode-controls">
+          <button id="toggle-mode" title="Switch dataset">Brainrot Mode</button>
+          <span id="mode-indicator" class="muted">CompTIA</span>
+        </div>
+      </div>
+      <p class="subtitle" id="subtitle">CompTIA A+ (1201) practice — fill the missing word</p>
     </header>
 
     <section class="card" id="game">

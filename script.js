@@ -1,21 +1,34 @@
 // Acronym Fill — game logic
 const $ = id => document.getElementById(id);
 let acronyms = null;
+let acronymsCompTIA = null;
+let acronymsBrainrot = null;
+let currentDataset = 'comptia'; // 'comptia' or 'brainrot'
 let current = null;
 let score = parseInt(localStorage.getItem('af_score')||'0',10) || 0;
 $('score').textContent = score;
 
 async function loadAcronyms(){
   try{
-    const resp = await fetch('data/acronyms.json');
-    acronyms = await resp.json();
+    const [r1, r2] = await Promise.all([
+      fetch('data/acronyms.json'),
+      fetch('data/brainrot.json')
+    ]);
+    acronymsCompTIA = await r1.json();
+    acronymsBrainrot = await r2.json();
+    acronyms = currentDataset === 'brainrot' ? acronymsBrainrot : acronymsCompTIA;
   }catch(e){
     // fallback if fetch fails
-    acronyms = [
+    acronymsCompTIA = [
       {acronym:'CPU',expansion:'Central Processing Unit'},
       {acronym:'RAM',expansion:'Random Access Memory'},
       {acronym:'BIOS',expansion:'Basic Input/Output System'}
     ];
+    acronymsBrainrot = [
+      {acronym:'BRN',expansion:'Tim Cheese and John Pork'},
+      {acronym:'TRL',expansion:'Tralalero Tralala Song'}
+    ];
+    acronyms = currentDataset === 'brainrot' ? acronymsBrainrot : acronymsCompTIA;
   }
 }
 
@@ -32,6 +45,20 @@ function chooseHiddenWord(expansion){
   if(!candidates.length) return null;
   const pick = candidates[Math.floor(Math.random()*candidates.length)];
   return pick;
+}
+
+function switchDataset(){
+  if(currentDataset === 'comptia'){
+    currentDataset = 'brainrot';
+    acronyms = acronymsBrainrot || acronymsCompTIA;
+  }else{
+    currentDataset = 'comptia';
+    acronyms = acronymsCompTIA || acronymsBrainrot;
+  }
+  const btn = $('toggle-mode'); if(btn) btn.textContent = currentDataset === 'comptia' ? 'Brainrot Mode' : 'CompTIA Mode';
+  const ind = $('mode-indicator'); if(ind) ind.textContent = currentDataset === 'comptia' ? 'CompTIA' : 'Brainrot';
+  const subtitle = $('subtitle'); if(subtitle) subtitle.textContent = currentDataset === 'comptia' ? 'CompTIA A+ (1201) practice — fill the missing word' : 'Brainrot mode — fill the missing word';
+  renderRound();
 }
 
 function renderRound(){
@@ -101,4 +128,9 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   $('show').addEventListener('click', showAnswer);
   $('next').addEventListener('click', nextRound);
   $('answer').addEventListener('keydown', e=>{ if(e.key==='Enter') checkAnswer(); });
+
+  const toggle = $('toggle-mode'); if(toggle) toggle.addEventListener('click', switchDataset);
+  // initialize mode label/button
+  const btn = $('toggle-mode'); if(btn) btn.textContent = currentDataset === 'comptia' ? 'Brainrot Mode' : 'CompTIA Mode';
+  const ind = $('mode-indicator'); if(ind) ind.textContent = currentDataset === 'comptia' ? 'CompTIA' : 'Brainrot';
 });
