@@ -20,6 +20,9 @@ body{
 }
 .app{max-width:900px;margin:0 auto}
 .header{text-align:center}
+.title-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.mode-controls{display:flex;align-items:center;gap:.5rem}
+.mode-controls .muted{color:var(--muted);font-size:.9rem;margin-left:.4rem}
 .header h1{margin:.2rem 0;font-size:2rem}
 .subtitle{color:var(--muted);margin-top:0}
 .card{
@@ -46,3 +49,18 @@ button:hover{filter:brightness(1.05)}
 }
 .success{color:var(--success)}
 .failure{color:var(--danger)}
+
+/* Brainrot theme */
+body.brainrot{
+  --accent:#ff7ab6;
+  --bg:#14061a;
+  color:#fff6ff;
+  background: radial-gradient(900px 400px at 10% 10%, rgba(255,122,182,0.06), transparent), radial-gradient(800px 400px at 90% 80%, rgba(139,92,246,0.04), transparent), var(--bg);
+  transition: background .35s ease, color .2s ease;
+  font-family: 'Fredoka', Inter, system-ui, sans-serif;
+}
+body.brainrot .acronym{color:var(--accent);text-shadow:0 4px 18px rgba(255,122,182,0.08)}
+body.brainrot button{border-color:rgba(255,122,182,0.12);color:var(--accent)}
+body.brainrot .card{box-shadow:0 8px 30px rgba(20,6,26,0.6)}
+.mode-controls button{margin-left:.5rem;padding:.4rem .6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--accent)}
+body.brainrot .mode-controls button{background:linear-gradient(90deg, rgba(255,122,182,0.08), rgba(139,92,246,0.06))}

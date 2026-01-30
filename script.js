@@ -51,9 +51,11 @@ function switchDataset(){
   if(currentDataset === 'comptia'){
     currentDataset = 'brainrot';
     acronyms = acronymsBrainrot || acronymsCompTIA;
+    document.body.classList.add('brainrot');
   }else{
     currentDataset = 'comptia';
     acronyms = acronymsCompTIA || acronymsBrainrot;
+    document.body.classList.remove('brainrot');
   }
   const btn = $('toggle-mode'); if(btn) btn.textContent = currentDataset === 'comptia' ? 'Brainrot Mode' : 'CompTIA Mode';
   const ind = $('mode-indicator'); if(ind) ind.textContent = currentDataset === 'comptia' ? 'CompTIA' : 'Brainrot';
@@ -133,4 +135,5 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   // initialize mode label/button
   const btn = $('toggle-mode'); if(btn) btn.textContent = currentDataset === 'comptia' ? 'Brainrot Mode' : 'CompTIA Mode';
   const ind = $('mode-indicator'); if(ind) ind.textContent = currentDataset === 'comptia' ? 'CompTIA' : 'Brainrot';
+  if(currentDataset === 'brainrot') document.body.classList.add('brainrot'); else document.body.classList.remove('brainrot');
 });

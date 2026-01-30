@@ -44,6 +44,8 @@ Open `data/acronyms.json` and add or edit entries in the format:
 ### Brainrot mode (fun)
 
 Toggle the **Brainrot Mode** button in the header to play with silly phrases instead of CompTIA acronyms. Edit `data/brainrot.json` to add your own fun phrases (same object format: `acronym` and `expansion`).
+
+When Brainrot Mode is active the app switches to a playful visual theme (accent colors, background, and a fun font).
 ---
 
 ## License
