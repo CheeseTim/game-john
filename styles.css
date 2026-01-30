@@ -1,0 +1,48 @@
+:root{
+  --bg:#0b0f14;
+  --card:#0f1720;
+  --muted:#98a0aa;
+  --accent:#7dd3fc;
+  --success:#34d399;
+  --danger:#fb7185;
+  --glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(125,211,252,0.03), transparent), var(--bg);
+  color:#e6eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:2rem;
+}
+.app{max-width:900px;margin:0 auto}
+.header{text-align:center}
+.header h1{margin:.2rem 0;font-size:2rem}
+.subtitle{color:var(--muted);margin-top:0}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;padding:1.25rem;margin-top:1.25rem;box-shadow:0 6px 20px rgba(2,6,23,0.6);
+}
+.row{display:flex;gap:1rem;align-items:center}
+.left{flex:1}
+.right{width:320px}
+.acronym{font-size:2.25rem;font-weight:700;letter-spacing:2px}
+.expansion{margin-top:.4rem;color:var(--muted);font-size:1.05rem}
+label{display:block;color:var(--muted);font-size:.85rem;margin-bottom:.35rem}
+input[type="text"]{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:var(--card);color:inherit}
+.controls{display:flex;gap:.5rem;margin-top:.65rem}
+button{background:var(--glass);color:var(--accent);border:1px solid rgba(125,211,252,0.08);padding:.5rem .75rem;border-radius:8px;cursor:pointer}
+button:hover{filter:brightness(1.05)}
+.result{margin-top:.6rem;min-height:1.4rem;color:var(--muted)}
+.footer-row{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;color:var(--muted)}
+.hint{margin-top:.85rem;color:var(--muted);font-size:.92rem}
+.footer{text-align:center;margin-top:1.25rem;color:var(--muted);font-size:.85rem}
+@media (max-width:720px){
+  .row{flex-direction:column}
+  .right{width:100%}
+}
+.success{color:var(--success)}
+.failure{color:var(--danger)}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Acronym Fill — CompTIA A+ Practice</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Fill-in-the-word acronym practice game for CompTIA A+ 1201 objectives (dark theme)." />
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>Acronym Fill</h1>
+      <p class="subtitle">CompTIA A+ (1201) practice — fill the missing word</p>
+    </header>
+
+    <section class="card" id="game">
+      <div class="row">
+        <div class="left">
+          <div class="acronym" id="acronym">CPU</div>
+          <div class="expansion" id="expansion">Central ______ Unit</div>
+        </div>
+        <div class="right">
+          <label for="answer">Your answer</label>
+          <input id="answer" type="text" placeholder="Type the missing word" autocomplete="off" />
+          <div class="controls">
+            <button id="check">Check</button>
+            <button id="skip">Skip</button>
+            <button id="show">Show Answer</button>
+          </div>
+          <div class="result" id="result" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="footer-row">
+        <div class="meta">Score: <strong id="score">0</strong></div>
+        <div class="nav">
+          <button id="next">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="hint">
+      <p>Tip: Common stop words like "of/and/the" are skipped when picking the hidden word.</p>
+    </section>
+
+    <footer class="footer">
+      <small>Made for study purposes. Edit <code>data/acronyms.json</code> to add/remove acronyms.</small>
+    </footer>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
